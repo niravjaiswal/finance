@@ -1,5 +1,7 @@
 <HTML>
    <head>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
       <script language="javascript">
          function compoundInterest() {
            var rate = document.getElementById('rate').value;
@@ -11,10 +13,29 @@
       </script>
    </head>
    <body bgcolor="lightblue">
-      Initial Investment <input type="text" id="principal" name="principal"/> <br/>
-      Investment Period (in years)  <input type="text" id="numOfPeriods" name="numOfPeriods"/> <br/>
-      Rate <input type="text" id="rate" name="rate"/> <br/>
-      <button onclick="compoundInterest()">Calculate</button>
+     <br/>
+     <div class="container">
+       <div class="row">
+        <div class="col-md-3">Initial Investment</div>
+        <div class="col-md-6"><input type="text" id="principal" name="principal"/> </div>
+      </div>
+
+      <div class="row">
+       <div class="col-md-3">Investment Period (in years)</div>
+       <div class="col-md-6"><input type="text" id="numOfPeriods" name="numOfPeriods"/> </div>
+      </div>
+
+      <div class="row">
+       <div class="col-md-3">Rate </div>
+       <div class="col-md-6"><input type="text" id="rate" name="rate"/></div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <button onclick="compoundInterest()">Calculate</button>
+        </div>
+      </div>
+    </div>
    </body>
    </div>
 </HTML>
