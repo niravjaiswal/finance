@@ -1,0 +1,20 @@
+<HTML>
+   <head>
+      <script language="javascript">
+         function compoundInterest() {
+           var rate = document.getElementById('rate').value;
+           var principal =  document.getElementById('principal').value;
+           var numOfPeriods = document.getElementById('numOfPeriods').value;
+           var CI = principal * Math.pow((1 + ((rate/100)/ rate)), rate * numOfPeriods);
+           alert(Math.round(CI * 100) / 100);
+         }
+      </script>
+   </head>
+   <body bgcolor="lightblue">
+      Initial Investment <input type="text" id="principal" name="principal"/> <br/>
+      Investment Period (in years)  <input type="text" id="numOfPeriods" name="numOfPeriods"/> <br/>
+      Rate <input type="text" id="rate" name="rate"/> <br/>
+      <button onclick="compoundInterest()">Calculate</button>
+   </body>
+   </div>
+</HTML>
