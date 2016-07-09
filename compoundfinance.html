@@ -8,7 +8,8 @@
            var principal =  document.getElementById('principal').value;
            var numOfPeriods = document.getElementById('numOfPeriods').value;
            var CI = principal * Math.pow((1 + ((rate/100)/ rate)), rate * numOfPeriods);
-           alert(Math.round(CI * 100) / 100);
+          //alert(Math.round(CI * 100) / 100);
+           document.getElementById('investmentReturn').innerHTML = Math.round(CI * 100) / 100;
          }
       </script>
    </head>
@@ -34,7 +35,12 @@
         <div class="col-md-6 text-center">
           <button onclick="compoundInterest()">Calculate</button>
         </div>
+      </div><br/>
+      <div class="row">
+       <div class="col-md-6 text-center">
+        Investment Return : <span id="investmentReturn">0</span>
       </div>
+     </div>
     </div>
    </body>
    </div>
