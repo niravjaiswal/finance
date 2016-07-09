@@ -1,47 +1,83 @@
 <HTML>
-   <head>
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-      <script language="javascript">
-         function compoundInterest() {
-           var rate = document.getElementById('rate').value;
-           var principal =  document.getElementById('principal').value;
-           var numOfPeriods = document.getElementById('numOfPeriods').value;
-           var CI = principal * Math.pow((1 + ((rate/100)/ rate)), rate * numOfPeriods);
-          //alert(Math.round(CI * 100) / 100);
-           document.getElementById('investmentReturn').innerHTML = Math.round(CI * 100) / 100;
-         }
-      </script>
-   </head>
-   <body bgcolor="lightblue">
-     <br/>
-     <div class="container">
-       <div class="row">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'X');
+            data.addColumn('number', 'Investment Return');
+
+            data.addRows([
+                [5000, 5000],   [12000, 12000]
+            ]);
+
+            var options = {
+                hAxis: {
+                    title: 'Years of Investment'
+                },
+                vAxis: {
+                    title: 'Return'
+                }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+    <script language="javascript">
+        function compoundInterest() {
+            var rate = document.getElementById('rate').value;
+            var principal = document.getElementById('principal').value;
+            var numOfPeriods = document.getElementById('numOfPeriods').value;
+            var CI = principal * Math.pow((1 + ((rate / 100) / rate)), rate * numOfPeriods);
+            document.getElementById('investmentReturn').innerHTML = Math.round(CI * 100) / 100;
+        }
+    </script>
+</head>
+<body bgcolor="lightblue">
+<br/>
+<div class="container">
+    <div class="row">
         <div class="col-md-3">Initial Investment</div>
-        <div class="col-md-6"><input type="text" id="principal" name="principal"/> </div>
-      </div>
-
-      <div class="row">
-       <div class="col-md-3">Investment Period (in years)</div>
-       <div class="col-md-6"><input type="text" id="numOfPeriods" name="numOfPeriods"/> </div>
-      </div>
-
-      <div class="row">
-       <div class="col-md-3">Rate </div>
-       <div class="col-md-6"><input type="text" id="rate" name="rate"/></div>
-      </div>
-      <br/>
-      <div class="row">
-        <div class="col-md-6 text-center">
-          <button onclick="compoundInterest()">Calculate</button>
-        </div>
-      </div><br/>
-      <div class="row">
-       <div class="col-md-6 text-center">
-        Investment Return : <span id="investmentReturn">0</span>
-      </div>
-     </div>
+        <div class="col-md-6"><input type="text" id="principal" name="principal"/></div>
     </div>
-   </body>
-   </div>
+
+    <div class="row">
+        <div class="col-md-3">Investment Period (in years)</div>
+        <div class="col-md-6"><input type="text" id="numOfPeriods" name="numOfPeriods"/></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">Rate</div>
+        <div class="col-md-6"><input type="text" id="rate" name="rate"/></div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <button onclick="compoundInterest()">Calculate</button>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            Investment Return : <span id="investmentReturn">0</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <div id="curve_chart" style="width: 900px; height: 500px"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</div>
 </HTML>
