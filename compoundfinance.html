@@ -9,14 +9,14 @@
 
         function drawChart() {
             var data = new google.visualization.DataTable();
-            console.log(+document.getElementById('principal').value);
+            console.log(+document.getElementById('numOfPeriods').value);
             console.log(+document.getElementById('investmentReturn').innerText);
             data.addColumn('number', 'X');
             data.addColumn('number', 'Investment Return');
 
             data.addRows([
-                [+document.getElementById('principal').value, +document.getElementById('principal').value],
-                [+document.getElementById('investmentReturn').innerText, +document.getElementById('investmentReturn').innerText]
+                [0, +document.getElementById('principal').value],
+                [+document.getElementById('numOfPeriods').value, +document.getElementById('investmentReturn').innerText]
             ]);
 
             var options = {
